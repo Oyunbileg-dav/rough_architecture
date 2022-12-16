@@ -7,10 +7,7 @@ let app = express()
 const APPLICATION_LOAD_BALANCER = process.env.APPLICATION_LOAD_BALANCER;
 
 app.get('/', async (req, res) => {
-  fetch('http://169.254.169.254/latest/meta-data/hostname').then(async(response) => {
-    const hostname = await response.text();
-    res.send(`Hello from ${hostname}`)
-  })
+  res.send({ message: 'hello world'})
 })
 
 app.get('/init', async (req, res) => {
@@ -20,8 +17,8 @@ app.get('/init', async (req, res) => {
   })
 })
 
-app.get('/users', async (req, res) => {
-  fetch(`http://${APPLICATION_LOAD_BALANCER}/users`).then(async (response) => {
+app.get('/videos', async (req, res) => {
+  fetch(`http://${APPLICATION_LOAD_BALANCER}/videos`).then(async (response) => {
     const data = await response.json();
     res.send(data)
   })

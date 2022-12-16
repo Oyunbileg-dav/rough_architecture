@@ -19,13 +19,13 @@ app.get('/', async (req, res) => {
 })
 
 app.get('/init', async (req, res) => {
-  connection.query('CREATE TABLE IF NOT EXISTS users (id INT(5) NOT NULL AUTO_INCREMENT PRIMARY KEY, lastname VARCHAR(40), firstname VARCHAR(40), email VARCHAR(30));');
-  connection.query('INSERT INTO users (lastname, firstname, email) VALUES ( "Tony", "Sam", "tonysam@whatever.com"), ( "Doe", "John", "john.doe@whatever.com" );');
+  connection.query('CREATE TABLE IF NOT EXISTS videos (id INT(5) NOT NULL AUTO_INCREMENT PRIMARY KEY, title VARCHAR(40)');
+  connection.query('INSERT INTO videos (title) VALUES ( "Hello Video World"), ( "This is a new video" );');
   res.send({ message: "init step done" })
 })
 
-app.get('/users', async (req, res) => {
-  connection.query('SELECT * from users', function (error, results) {
+app.get('/videos', async (req, res) => {
+  connection.query('SELECT * from videos', function (error, results) {
     if (error) throw error;
     res.send(results)
   });
