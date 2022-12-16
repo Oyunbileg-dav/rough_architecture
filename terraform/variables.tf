@@ -1,6 +1,6 @@
 variable "region" {
     type = string
-    default = "sa-east-1
+    default = "sa-east-1"
 }
 
 variable "main_cidr_block" {
@@ -21,12 +21,12 @@ variable "private_cidr_blocks" {
 
 variable "ecr_application_tier" {
   type    = string
-  default = "application-tier-app"
+  default = "app-application-tier"
 }
 
 variable "ecr_presentation_tier" {
   type    = string
-  default = "presentation-tier-app"
+  default = "app-presentation-tier"
 }
 
 # rds variables
@@ -68,3 +68,4 @@ variable "instance_class" {
 variable "db_engine" {
   default = "mysql"
 }
+

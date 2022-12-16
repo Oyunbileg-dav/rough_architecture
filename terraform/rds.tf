@@ -1,4 +1,4 @@
-resource "aws_db_instance" "default" {
+resource "aws_db_instance" "rds" {
   allocated_storage = var.allocated_storage
   engine_version    = var.engine_version
   multi_az          = false

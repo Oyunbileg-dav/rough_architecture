@@ -121,7 +121,7 @@ resource "aws_launch_template" "application_tier" {
   }
 
   user_data = base64encode(templatefile("./../user-data/user-data-application-tier.sh", {
-    rds_hostname  = module.rds.rds_address,
+    rds_hostname  = aws_db_instance.rds.address,
     rds_username  = var.rds_db_admin,
     rds_password  = var.rds_db_password,
     rds_port      = 3306,

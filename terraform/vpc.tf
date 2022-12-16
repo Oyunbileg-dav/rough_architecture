@@ -2,12 +2,16 @@
 resource "aws_vpc" "main" {
   cidr_block = var.main_cidr_block
 
-  create_nat_gateways  = true
   enable_dns_hostnames = true
   enable_dns_support   = true
   tags = {
     Name = "main"
   }
+}
+
+# Declare the data source
+data "aws_availability_zones" "available" {
+  state = "available"
 }
 
 # Creat public subnets in the first two availability zones
@@ -213,3 +217,4 @@ resource "aws_route_table_association" "private-route" {
   subnet_id      = aws_subnet.private_subnets[count.index].id
   route_table_id = aws_route_table.private_route[count.index].id
 }
+
