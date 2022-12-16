@@ -1,4 +1,6 @@
-## rough_architecture
+## 3-tier application deployment on AWS using Terraform and Docker
+In this blog post, we will build a highly available application on top of AWS cloud services. 
+To make the infrastructure configurations more illustrative, let's imagine a scenario where CLOUD is very much needed!
 
 ### Scenario description
 We will design an architecture for a vocational training web application, where learners will be able to take courses in the form of pre-recorded videos. This web app is intended to solve the problem of people in rural areas who want to take vocational training courses but cannot due to the over-centralization of training centers in the capital city of Mongolia. 
@@ -8,6 +10,10 @@ We will design an architecture for a vocational training web application, where 
 - It must be easy to scale up or down because we do not know the traffic load yet
 - The app servers that deal with the database should not be accessible by the rest of the world to ensure security (Intellectual property, user data security)
 - There should be no single point of failure (especially when uploading videos from the course provider interface)
+
+By the end of this tutorial, we will have the following architecture deployed.
+
+![Diagram](/images/diagram.png)
 
 1. Login to ECR: replace region and AWS account ID. If you don't know where to find your account ID, please refer to this page. 
 ```
