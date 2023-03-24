@@ -7,10 +7,10 @@ const connection = mysql.createConnection({
   user: process.env.RDS_USERNAME,
   password: process.env.RDS_PASSWORD,
   port: process.env.RDS_PORT,
-  db_name: process.env.RDS_DB_NAME
+  db_name: process.env.RDS_DB_NAME,
 });
 connection.connect()
-connection.query(`use ${process.env.RDS_DB_NAME};`)
+connection.query('use ' + process.env.RDS_DB_NAME + ';');
 
 let app = express()
 
@@ -19,8 +19,8 @@ app.get('/', async (req, res) => {
 })
 
 app.get('/init', async (req, res) => {
-  connection.query('CREATE TABLE IF NOT EXISTS videos (id INT(5) NOT NULL AUTO_INCREMENT PRIMARY KEY, title VARCHAR(40)');
-  connection.query('INSERT INTO videos (title) VALUES ( "Hello Video World"), ( "This is a new video" );');
+  connection.query('CREATE TABLE IF NOT EXISTS videos (id INT(5) NOT NULL AUTO_INCREMENT PRIMARY KEY, title VARCHAR(40))');
+  connection.query('INSERT INTO videos (title) VALUES ( "Hello Video World")');
   res.send({ message: "init step done" })
 })
 
@@ -38,5 +38,5 @@ app.use((req, res) => {
 })
 
 app.listen(PORT, () => {
-  console.log(`Listening on PORT ${PORT}`);
+  console.log('Listening on PORT ${PORT}');
 })
